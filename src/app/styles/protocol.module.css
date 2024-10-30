@@ -1,0 +1,402 @@
+@font-face {
+  font-family: FXDX-R;
+  src: url("../../assests/FXDX/FXDXRegular.ttf");
+}
+
+@font-face {
+  font-family: FXDX-M;
+  src: url("../../assests/FXDX/FXDXMedium.ttf");
+}
+
+@font-face {
+  font-family: FXDX-B;
+  src: url("../../assests/FXDX/FXDXSemiBold.ttf");
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("../../assests/Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+.part1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: auto;
+}
+
+.logo {
+  border-radius: 50%;
+}
+
+.name {
+  color: #fff;
+  font-family: Inter;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3.5rem;
+  margin-top: 1rem;
+}
+
+.chains {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+.chain {
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #333;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+}
+
+.info {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+.urlClick {
+  top: 0.1rem;
+  left: -0.5rem;
+  position: relative;
+}
+
+.infobox {
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #333;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  text-align: justify;
+}
+
+.part2 {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.tvlBox {
+  margin-right: -7.4rem;
+
+  min-width: 26.625rem;
+  min-height: 32.9375rem;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+.tvlChart {
+  min-height: 60%;
+  width: 47.75rem;
+  margin: -22.8rem -9.8rem 0 10rem;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+  margin-top: -20rem;
+}
+
+
+.tvlStats {
+  display: flex;
+  width: 47.75rem;
+  height: 13.875rem;
+  margin: 22rem 0 0 -38rem;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+
+.part3 {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.pools {
+  margin: 1.25rem auto;
+  width: 76.25rem;
+  height: 29.3125rem;
+  flex-shrink: 1;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+
+.boxhead {
+  position: relative;
+  margin: 2.19rem 0 0 1.8rem;
+  color: #858585;
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.tvl {
+  color: #fff;
+  font-family: Inter;
+  margin: 1rem 0 0 1.8rem;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.tvlline {
+  width: auto;
+  height: 0.0625rem;
+  background: #2e2e2e;
+  margin-top: 1.25rem;
+}
+
+.chainTvls {
+  display: flex;
+  flex-direction: column;
+
+  grid-auto-rows: minmax(10%, auto);
+  /* margin: 1.25rem 0 0 1rem; */
+  padding: 1rem;
+  padding-bottom: 0.1rem;
+  max-height: 25%;
+  min-height: 10%;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+
+.pchain {
+  display: flex;
+  width: auto;
+  color: #a9a9a9;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0.95rem;
+  margin-left: 0;
+}
+
+.pchaintvl {
+  display: flex;
+  margin: 0rem 0rem 0rem 0rem;
+  justify-content: center;
+  text-align: left;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.token {
+  display: grid;
+  gap: 16rem;
+  row-gap: 0.2222rem;
+  color: #a9a9a9;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 1.81rem 1.81rem;
+  padding: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.lptoken {
+  color: #fff;
+  margin: 1rem 0rem 1rem 0rem;
+  font-family: Inter;
+  font-size: small;
+}
+
+.symbol {
+  color: #22c761;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.change_r {
+  color: #f85032;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.change_g {
+  color: #22c761;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.chartName {
+  width: 2rem;
+  height: 2rem;
+  color: var(--2, #fff);
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.neon {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #666;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+}
+
+.charttext {
+  margin: 1.75rem 0rem 0rem 1.25rem;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  z-index: 1rem;
+}
+
+.statsgrid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 0rem;
+  column-gap: 30rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 4.5rem 0rem 0rem -9rem;
+}
+.tvllist {
+  margin: 4.44rem 0rem 0rem -9.4rem;
+  color: #d8d8d8;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.ATH {
+  color: #22c761;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ATL {
+  color: #f85032;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.chaintvldata{
+  display: flex;
+align-items: center;
+padding-left: 1rem;
+padding-right: 1rem;
+/* flex-direction: column; */
+justify-content: space-between;
+width: 100%;
+}
+
+
+@media only screen and (max-width: 768px) { 
+ 
+.tvlChart{
+  display: flex;
+  margin-top: 5rem;
+}
+  .name {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .chains, .info {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .chain, .infobox {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .part2, .part3 {
+    flex-direction: column;
+  }
+
+  .tvlBox, .tvlChart, .tvlStats {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .statsgrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 2rem 0 0 0;
+  }
+  
+  .tvllist {
+    margin: 2rem 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 480px) { 
+  /* Styles for mobile phones */
+  .name {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .chain, .infobox {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .pools {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .tvlBox, .tvlChart, .tvlStats {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .tvlBox {
+    margin-right: -5.4rem;
+    margin-left: -5.4rem;
+  
+    min-width: 5.625rem;
+    min-height: 32.9375rem;
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #181818;
+  }
+}

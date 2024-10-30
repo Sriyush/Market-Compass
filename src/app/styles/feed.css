@@ -1,0 +1,144 @@
+.contianer{
+    margin: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cellbox{
+ display: flex;
+ flex-direction: column;
+ margin: 2rem;
+ border: solid rgb(36, 35, 35);
+ border-radius: 1rem;
+ margin-left: 12rem;
+ margin-right: 12rem;
+}
+
+.header{
+display: flex;
+justify-content: space-between;
+}
+
+.keywords{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.date{
+margin-right: 1rem;
+}
+.header{
+    align-items: center;
+margin-left: 1rem;
+margin-top: 0.5rem;
+margin-right: 2rem;
+}
+
+.newsauthor{
+    display: flex;
+ 
+}
+
+.newsauthor img{
+    width:4rem;
+    height: 4rem;
+    margin: 0.3rem;
+    padding: 0.5rem;
+}
+
+.hastags{
+    display: flex;
+overflow: hidden;
+gap: 1rem;
+color: blue;
+font: 800px;
+margin-top: 0.5rem;
+margin-bottom: 0.5rem;
+margin-left: 0.5rem;
+}
+.article{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 0.5rem;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+.title{
+    display: flex;
+    margin-bottom: 0.5rem;
+    font: 700;
+    font-size:larger;
+    font-weight: bolder;
+}
+
+.social{
+    display: flex;
+    flex-direction: row;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    justify-content: space-between;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+.mainheader{
+display: flex;
+margin-left:1rem;
+margin-bottom: 2rem;
+font-size: large;
+font-weight: bolder;
+}
+.imageborder{
+    display: flex;
+    border: 0.2rem solid blue;
+    border-radius: 0.5rem;
+    margin-left: 0.4rem;
+    margin-top: 0.4rem;
+}
+.Hr {
+    border: none;
+    height: 0.05rem;
+    background-color: #464444; 
+    margin: 0.5rem 0;
+margin-left: 1rem;
+margin-right: 1rem;
+}
+@media (max-width: 964px) {
+    .container {
+        margin: 1rem;
+    }
+    .cellbox {
+        margin: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .header {
+        flex-direction: row;
+        align-items: center;
+        
+    }
+    .keywords, .hastags {
+        flex-wrap: wrap;
+    }
+    .date {
+        margin-right: 0.5rem;
+        white-space: nowrap;
+    }
+    .newsauthor img {
+        width: 2rem;
+        height: 1.5rem;
+      padding: 0;
+        margin-bottom: 0.5rem;
+    }
+    .social {
+        flex-direction: row;
+        align-items: center;
+       margin: 1rem;
+    }
+}

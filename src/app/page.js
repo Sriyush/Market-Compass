@@ -1,101 +1,245 @@
+"use client";
 import Image from "next/image";
+import Navbar from "./components/Navbar";
+import "./styles/home.css";
+import rank from "../assests/rank.svg";
+import search from "../assests/search.svg";
+import candle from "../assests/candle.svg";
+import order from "../assests/order.svg";
+import Dough from "./components/Doughnut";
+import React, { useEffect, useState } from 'react';
+import ethereum from "../assests/ethereum.svg";
+import {
+  XAxis,
+  YAxis,
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+} from "recharts";
+
+function getChainSVGUrl(chainName) {
+  return `/chains/${chainName.toLowerCase()}.svg`;
+}
+
+const COLORS = ["#F8E837", "green", "#0076FF", "#FF8042", "#FFFFFF4D"];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [data, setdata] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Sample data for demonstration
+  const sampleData = [
+    {
+      rank: 1,
+      protocolname: "Protocol A",
+      tvl: 2000000000,
+      logo: ethereum,
+      chains: ["Ethereum", "Binance"],
+      mcap: 3000000000,
+      change_7d: 10,
+      volume24h: 5000000,
+      chartTVL: [
+        { date: 1622505600, totalLiquidityUSD: 2000000000 },
+        { date: 1622592000, totalLiquidityUSD: 2100000000 },
+      ],
+    },
+    {
+      rank: 2,
+      protocolname: "Protocol B",
+      tvl: 1500000000,
+      logo: ethereum,
+      chains: ["Ethereum", "Polygon"],
+      mcap: 2500000000,
+      change_7d: -5,
+      volume24h: 3000000,
+      chartTVL: [
+        { date: 1622505600, totalLiquidityUSD: 1500000000 },
+        { date: 1622592000, totalLiquidityUSD: 1550000000 },
+      ],
+    },
+    // Add more sample protocols as needed
+  ];
+
+  // Update sample data to state (replace this with actual data fetching)
+  React.useEffect(() => {
+    setdata(sampleData);
+  }, []);
+
+  const filteredData = data.filter((protocol) =>
+    protocol.protocolname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const format = (value) => {
+    if (value >= 1000000000) {
+      return `${(value / 1000000000).toFixed(2)}B`;
+    }
+    if (value >= 1000000) {
+      return `${(value / 1000000).toFixed(2)}M`;
+    }
+    if (typeof value === 'number' && value <= 1000) {
+      return `${value.toFixed(2)}`;
+    } else if (value >= 1000) {
+      return `${(value / 1000).toFixed(2)}K`;
+    } else {
+      return value;
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <div className="layout">
+        <div className="home-contianer">
+          <div className="box">
+            <div className="group">
+              <div className="marketsize">
+                <div className="headers">
+                  <div className="heading">Market size</div>
+                </div>
+                <div className="ranking">
+                  <Image className="group-2" alt="Group" src={rank} />
+                  <div className="text-wrapper-8">
+                    {data.length > 0 ? format(data[0].tvl) : ''}
+                  </div>
+                  <Image
+                    className="icon"
+                    alt="Icon"
+                    src={data.length > 0 ? data[0].logo : ''}
+                    width={22}
+                    height={22}
+                  />
+                </div>
+                <div className="data">
+                  <div className="doughnut">
+                    <Dough pieChartData={data} />
+                  </div>
+                  <div className="exchanges">
+                    {data
+                      ? data.slice(0, 4).map((name, index) => (
+                          <div key={index} className="text-wrapper">
+                            <Image
+                              className="mark"
+                              alt="Mark"
+                              src={name.logo}
+                              width={15}
+                              height={15}
+                            />
+                            {name.protocolname}
+                          </div>
+                        ))
+                      : null}
+                    <div className="text-wrapper">Others</div>
+                  </div>
+                </div>
+              </div>
+              <div className="chartcontainer">
+                <div className="heading">Total value Locked</div>
+                <div className="minih">
+                  <div className="tvlprice">
+                    ${data.length > 0 ? format(data[0].tvl) : ''}
+                  </div>
+                </div>
+                <div className="linechart">
+                  <ResponsiveContainer width="100%" height={200}>
+                    <AreaChart
+                      width={500}
+                      height={300}
+                      data={data[0] ? data[0].chartTVL : []}
+                      margin={{
+                        top: 5,
+                        right: 1,
+                        left: -15,
+                        bottom: 5,
+                      }}
+                    >
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Area
+                        type="monotone"
+                        dataKey="totalLiquidityUSD"
+                        stroke="red"
+                        fill="url(#chartGradient)"
+                        strokeWidth={0.9}
+                        dot={false}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="tableheader">
+            <div className="tmainhead">Crypto Derivatives</div>
+            <div className="searchbar">
+              <div className="search">
+                <Image src={search} alt="search" />
+                <input
+                  placeholder="Search (eg. dydx, Gmx)"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="div">
+            <div className="datatable">
+              <div className="tables">
+                <div className="table">
+                  <div className="thead-rank">#</div>
+                  <div className="thead-name">Name</div>
+                  <div className="thead-tvl">TVL</div>
+                  <div className="thead-protocol">Protocol</div>
+                  <div className="thead-marketcap">Market Cap</div>
+                  <div className="thead-7dchange">7d Change</div>
+                  <div className="thead-24hrvolume">24hr Volume</div>
+                </div>
+              </div>
+              {filteredData.map((item, index) => (
+                <div className="tablecells" key={index}>
+                  <div className="tablecell">
+                    <div className="tablecell-rank">{item.rank}</div>
+                    <div className="tablecell-name">
+                      <div className="nameimg">
+                        <Image
+                          src={item.logo}
+                          alt={item.protocolname}
+                          width={22}
+                          height={22}
+                          margin={1}
+                        />
+                      </div>
+                      <div>{item.protocolname}</div>
+                    </div>
+                    <div className="tablecell-tvl">${format(item.tvl)}</div>
+                    <div className="tablecell-marketcap">
+                      {item.mcap ? format(item.mcap) : "N/A"}
+                    </div>
+                    <div
+                      className="tablecell-7dchange"
+                      style={{
+                        color: item.change_7d < 0 ? "red" : "green",
+                      }}
+                    >
+                      {item.change_7d !== null && item.change_7d !== undefined
+                        ? `${item.change_7d.toFixed(2)}%`
+                        : "N/A"}
+                    </div>
+                    <div className="tablecell-24hrvolume">
+                      {item.volume24h !== null && item.volume24h !== undefined
+                        ? `${format(item.volume24h.toFixed(2))}`
+                        : "N/A"}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
