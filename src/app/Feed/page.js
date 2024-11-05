@@ -26,7 +26,7 @@ export default function Feed () {
         <div>
             <Navbar />
             <div className="container">
-                <p className="mainheader">Deripulse</p>
+                <p className="mainheader">Market Compass</p>
                 <div>
                     {data && data.map((item, index) => (
                         <div key={index} className="cellbox">

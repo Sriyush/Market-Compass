@@ -31,7 +31,7 @@ export default function Home() {
   const sampleData = [
     {
       rank: 1,
-      protocolname: "Protocol A",
+      protocolname: "Ethereum",
       tvl: 2000000000,
       logo: ethereum,
       chains: ["Ethereum", "Binance"],
@@ -45,7 +45,7 @@ export default function Home() {
     },
     {
       rank: 2,
-      protocolname: "Protocol B",
+      protocolname: "Binance",
       tvl: 1500000000,
       logo: ethereum,
       chains: ["Ethereum", "Polygon"],
@@ -93,7 +93,7 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="layout">
-        <div className="home-contianer">
+        <div className="home-container">
           <div className="box">
             <div className="group">
               <div className="marketsize">
@@ -108,7 +108,7 @@ export default function Home() {
                   <Image
                     className="icon"
                     alt="Icon"
-                    src={data.length > 0 ? data[0].logo : ''}
+                    src={data.length > 0 ? data[0].logo : null}
                     width={22}
                     height={22}
                   />
@@ -118,26 +118,24 @@ export default function Home() {
                     <Dough pieChartData={data} />
                   </div>
                   <div className="exchanges">
-                    {data
-                      ? data.slice(0, 4).map((name, index) => (
-                          <div key={index} className="text-wrapper">
-                            <Image
-                              className="mark"
-                              alt="Mark"
-                              src={name.logo}
-                              width={15}
-                              height={15}
-                            />
-                            {name.protocolname}
-                          </div>
-                        ))
-                      : null}
+                    {data.slice(0, 4).map((name, index) => (
+                      <div key={index} className="text-wrapper">
+                        <Image
+                          className="mark"
+                          alt="Mark"
+                          src={name.logo || null}
+                          width={15}
+                          height={15}
+                        />
+                        {name.protocolname}
+                      </div>
+                    ))}
                     <div className="text-wrapper">Others</div>
                   </div>
                 </div>
               </div>
               <div className="chartcontainer">
-                <div className="heading">Total value Locked</div>
+                <div className="heading">Total Value Locked</div>
                 <div className="minih">
                   <div className="tvlprice">
                     ${data.length > 0 ? format(data[0].tvl) : ''}
@@ -205,8 +203,8 @@ export default function Home() {
                     <div className="tablecell-name">
                       <div className="nameimg">
                         <Image
-                          src={item.logo}
-                          alt={item.protocolname}
+                          src={item.logo || null}
+                          alt="prot"
                           width={22}
                           height={22}
                           margin={1}

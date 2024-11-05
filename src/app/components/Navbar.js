@@ -25,7 +25,7 @@ import Link from 'next/link';
           </div>  
         <div className="logo">
           <Image src={logo} alt="Logo" />
-          Deri Pulse
+          Market Compass
           <div className="partition"></div>
         </div>
           <ul className={`nav-links ${isMenuOpen ? 'open' : 'closed'}`}>
