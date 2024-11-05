@@ -188,7 +188,7 @@ export default function Home() {
               <div className="tables">
                 <div className="table">
                   <div className="thead-rank">#</div>
-                  <div className="thead-name">Name</div>
+                  <div className="thead-name">Names</div>
                   <div className="thead-tvl">TVL</div>
                   <div className="thead-protocol">Protocol</div>
                   <div className="thead-marketcap">Market Cap</div>
